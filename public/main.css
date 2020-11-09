@@ -1,0 +1,70 @@
+img {
+  width: 50px;
+}
+* {
+  box-sizing: border-box;
+  font-family: cursive;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* align-content: center; */
+}
+header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+}
+header a {
+  font-size: 2rem;
+}
+.book-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.book-item {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  background-color: snow;
+  width: 30vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+.book-item:hover,
+.book-item:focus {
+  border: 1px solid blue;
+  border-radius: 1rem;
+  background-color: tan;
+  cursor: pointer;
+}
+
+.book-info {
+  width: 50%;
+}
+
+.book-item img {
+  width: 100px;
+}
+
+@media (max-width: 600px) {
+  .book-item {
+    width: 95vw;
+    flex-direction: column;
+  }
+  .book-info {
+    width: 100%;
+  }
+}

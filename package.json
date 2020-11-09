@@ -1,0 +1,37 @@
+{
+  "name": "dealers_choice_js",
+  "version": "1.0.0",
+  "description": "node.js and express practice with book list",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjsamphex/dealers_choice_js.git"
+  },
+  "author": "Samir Jain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sjsamphex/dealers_choice_js/issues"
+  },
+  "homepage": "https://github.com/sjsamphex/dealers_choice_js#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "html-template-tag": "^3.2.0",
+    "pg": "^8.4.2",
+    "sql-template-strings": "^2.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-google": "^0.14.0",
+    "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": "12.19.0"
+  }
+}
