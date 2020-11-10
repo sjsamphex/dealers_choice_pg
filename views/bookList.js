@@ -13,7 +13,7 @@ module.exports = (books) => {
           ><img src="/CatBookLogo.png" />
           <br />
         </header>
-        <a href="/books/add">Add a book</a>
+        <h3><a href="/books/add">Add a book</a></h3>
         <div class="book-list">
           ${books.map(
             (book) => html` <a href="/books/${book.id}">
