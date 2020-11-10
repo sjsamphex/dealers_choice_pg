@@ -1,4 +1,3 @@
-const express = require('express');
 const router = require('express').Router();
 const client = require('../db/index');
 // eslint-disable-next-line no-unused-vars
