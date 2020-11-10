@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const morgan = require('morgan');
+//const morgan = require('morgan');
 const fourOhFour = require('./views/404');
 
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 
 express.static('./');
