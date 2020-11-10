@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const client = require('./db/index');
 // const bookBank = require('./bookBank.js');
 // eslint-disable-next-line no-unused-vars
@@ -10,50 +10,46 @@ const bookDetails = require('./views/bookDetails');
 const fourOhFour = require('./views/404');
 const SQL = require('sql-template-strings');
 
+const routes = require('./routes/books');
+app.use('/books', routes);
+
 express.static('./');
 app.use(express.static('public'));
 app.use(express.static('public/images'));
 
-// app.use(morgan('dev'));
-app.get('/', async (req, res, next) => {
-  try {
-    const data = await client.query(SQL`SELECT * FROM books`);
-    const books = data.rows;
+app.use(morgan('dev'));
+// app.get('/', async (req, res, next) => {
+//   try {
+//     const data = await client.query(SQL`SELECT * FROM books`);
+//     const books = data.rows;
 
-    // const books = bookBank.list();
-    res.send(bookList(books));
-  } catch (error) {
-    next(error);
-  }
-});
+//     res.send(bookList(books));
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
-app.get('/books/:id', async (req, res, next) => {
-  let id = req.params.id;
-  try {
-    const booklistquery = await client.query(SQL`SELECT count(*) FROM books`);
-    const booklistlength = booklistquery.rows[0].count;
-    console.log(booklistlength);
-    if (id > booklistlength) {
-      id = id % booklistlength;
-    }
+// app.get('/books/:id', async (req, res, next) => {
+//   let id = req.params.id;
+//   try {
+//     const booklistquery = await client.query(SQL`SELECT count(*) FROM books`);
+//     const booklistlength = booklistquery.rows[0].count;
+//     console.log(booklistlength);
+//     if (id > booklistlength) {
+//       id = id % booklistlength;
+//     }
 
-    // const data = await client.query(
-    //   SQL`SELECT * FROM books WHERE id=${req.params.id}`
-    // );
-    const data = await client.query(SQL`SELECT * FROM books WHERE id=$1`, [id]);
-    const [book] = data.rows;
+//     // const data = await client.query(
+//     //   SQL`SELECT * FROM books WHERE id=${req.params.id}`
+//     // );
+//     const data = await client.query(SQL`SELECT * FROM books WHERE id=$1`, [id]);
+//     const [book] = data.rows;
 
-    // const books = bookBank.list();
-    res.send(bookDetails(book));
-  } catch (error) {
-    next(error);
-  }
-  // const book = bookBank.find(id);
-  // if (!book.id) {
-  //   next(new Error('Not Found'));
-  // }
-  // res.send(bookDetails(book));
-});
+//     res.send(bookDetails(book));
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 app.use(function (err, req, res, next) {
   console.error(err.stack);
