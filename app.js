@@ -1,11 +1,10 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-
 const fourOhFour = require('./views/404');
-const SQL = require('sql-template-strings');
 
 app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: false }));
 
 express.static('./');
 app.use(express.static('public'));
